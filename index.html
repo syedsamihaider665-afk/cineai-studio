@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090b16">
+  <meta name="description" content="CineAI Studio — plan, prompt, preview and manage AI video projects.">
+  <title>CineAI Studio — AI Video Workspace</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <style>
+    :root{color-scheme:dark;--bg:#090b16;--panel:#111528;--panel2:#171d34;--line:#29314f;--text:#f4f6ff;--muted:#a5aecb;--accent:#8b7cff;--cyan:#53d8e8}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#29205a 0,transparent 38%),var(--bg);color:var(--text);font:15px/1.55 Inter,system-ui,Segoe UI,Arial,sans-serif}
+    button,input,textarea,select{font:inherit}button{cursor:pointer}.wrap{max-width:1180px;margin:auto;padding:22px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 0 26px}.brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:20px;letter-spacing:.2px}.logo{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,var(--accent),var(--cyan));display:grid;place-items:center;color:#080b18;font-weight:900;font-size:22px}
+    .tag{color:var(--muted);font-size:12px;border:1px solid var(--line);padding:7px 11px;border-radius:99px}
+    .hero{padding:34px 0 26px;max-width:760px}.eyebrow{color:var(--cyan);font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:11px}.hero h1{font-size:clamp(34px,6vw,58px);line-height:1.05;margin:12px 0}.grad{background:linear-gradient(90deg,#fff,var(--cyan),#a998ff);background-clip:text;color:transparent}.hero p{color:var(--muted);font-size:16px;max-width:650px}
+    .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;margin-top:18px}.card{background:linear-gradient(180deg,rgba(23,29,52,.96),rgba(17,21,40,.96));border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 18px 60px #0003}.card h2{font-size:18px;margin:0 0 5px}.sub{color:var(--muted);font-size:13px;margin:0 0 18px}
+    label{display:block;font-size:13px;color:#dce2ff;margin:14px 0 7px}textarea,input,select{width:100%;background:#0b1020;border:1px solid #303957;color:var(--text);border-radius:11px;padding:12px;outline:none}textarea:focus,input:focus,select:focus{border-color:var(--accent)}textarea{min-height:128px;resize:vertical}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .btn{border:0;border-radius:11px;padding:11px 16px;font-weight:750;color:#090b16;background:linear-gradient(100deg,#a99aff,#5ce0e8)}.btn.secondary{background:#252d4a;color:#e9edff;border:1px solid #3b466c}.btn:disabled{opacity:.5;cursor:not-allowed}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+    .preview{min-height:310px;background:#080b16;border:1px dashed #3a456b;border-radius:15px;display:grid;place-items:center;overflow:hidden;text-align:center;padding:18px}.preview video{width:100%;max-height:420px;border-radius:10px}.placeholder{color:var(--muted);max-width:270px}.placeholder .play{font-size:38px;color:var(--cyan)}
+    .notice{margin-top:15px;padding:12px 14px;background:#101a2b;border:1px solid #29485b;border-radius:12px;color:#b9eaf0;font-size:12px}.features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0 30px}.feature{padding:16px;border:1px solid var(--line);background:#101528;border-radius:15px}.feature b{display:block;margin-bottom:4px}.feature span{font-size:12px;color:var(--muted)}
+    footer{border-top:1px solid var(--line);padding:22px 0;color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+    @media(max-width:800px){.grid{grid-template-columns:1fr}.features{grid-template-columns:1fr}.wrap{padding:16px}.hero{padding-top:20px}.tag{display:none}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header><div class="brand"><div class="logo">C</div><span>CineAI Studio</span></div><span class="tag">YOUR CREATIVE VIDEO WORKSPACE</span></header>
+  <section class="hero"><div class="eyebrow">Imagine · Prompt · Create</div><h1>Turn your ideas into <span class="grad">cinematic videos.</span></h1><p>Build a clear AI-video brief, organize your creative settings, and preview video files made with your chosen AI video generator.</p></section>
+  <section class="features">
+    <div class="feature"><b>✦ Prompt builder</b><span>Shape your idea into a detailed video prompt.</span></div>
+    <div class="feature"><b>▣ Video preview</b><span>Import and preview an MP4 generated elsewhere.</span></div>
+    <div class="feature"><b>↗ Mobile friendly</b><span>Use the workspace on phones, tablets and desktops.</span></div>
+  </section>
+  <main class="grid">
+    <section class="card">
+      <h2>Create a video brief</h2><p class="sub">Describe your scene and choose a few production settings.</p>
+      <label for="idea">Your video idea</label><textarea id="idea" placeholder="Example: A realistic cinematic shot of an old railway station at midnight, rain falling, a mysterious figure in the distance..."></textarea>
+      <div class="row">
+        <div><label for="style">Visual style</label><select id="style"><option>Cinematic realism</option><option>Horror realism</option><option>Documentary</option><option>Anime</option><option>3D animation</option><option>Fantasy</option></select></div>
+        <div><label for="ratio">Aspect ratio</label><select id="ratio"><option>16:9</option><option>9:16</option><option>1:1</option><option>4:3</option></select></div>
+      </div>
+      <div class="row">
+        <div><label for="duration">Duration</label><select id="duration"><option>10 seconds</option><option>15 seconds</option><option>30 seconds</option><option>60 seconds</option></select></div>
+        <div><label for="camera">Camera movement</label><select id="camera"><option>Slow cinematic dolly</option><option>Handheld realistic</option><option>Static tripod</option><option>Drone aerial</option><option>Tracking shot</option></select></div>
+      </div>
+      <div class="actions"><button class="btn" id="build">Build my prompt</button><button class="btn secondary" id="copy">Copy prompt</button></div>
+      <label for="output">Generated prompt</label><textarea id="output" placeholder="Your detailed prompt will appear here..." readonly></textarea>
+      <div class="notice">Note: This starter version creates prompts and previews imported videos. It does not generate AI video by itself yet. A real text-to-video or image-to-video API and a secure backend must be connected for generation.</div>
+    </section>
+    <section class="card">
+      <h2>Video preview</h2><p class="sub">Import an MP4 created with an external AI video tool.</p>
+      <div class="preview" id="preview"><div class="placeholder"><div class="play">▶</div><b>Your video preview appears here</b><p>Choose an MP4 file below to preview it.</p></div></div>
+      <label for="videoFile">Choose video file</label><input id="videoFile" type="file" accept="video/mp4,video/webm,video/quicktime">
+      <div class="actions"><button class="btn secondary" id="download" disabled>Download imported video</button><button class="btn secondary" id="clear">Clear preview</button></div>
+      <p class="sub" id="fileInfo" aria-live="polite"></p>
+    </section>
+  </main>
+  <footer><span>© <span id="year"></span> CineAI Studio</span><span>Independent project · Your code, your control</span></footer>
+</div>
+<script>
+const $=id=>document.getElementById(id);let currentUrl=null;
+$("year").textContent=new Date().getFullYear();
+$("build").addEventListener("click",()=>{
+ const idea=$("idea").value.trim();if(!idea){$("idea").focus();alert("Please describe your video idea first.");return;}
+ $("output").value=`Create a ${$("duration").value} ${$("style").value.toLowerCase()} video in ${$("ratio").value} aspect ratio.\\n\\nSCENE: ${idea}\\n\\nCAMERA: ${$("camera").value}. Use intentional, smooth camera movement and cinematic composition.\\nLIGHTING: Natural, believable lighting with realistic shadows and highlights.\\nDETAIL: High visual fidelity, coherent motion, consistent subjects and environments, realistic textures, no flicker, no warped objects, no unwanted text or watermarks.\\nAUDIO: Add suitable ambient sound and synchronized effects where supported.\\n\\nMaintain visual continuity throughout the clip.`;
+});
+$("copy").addEventListener("click",async()=>{const t=$("output").value;if(!t){alert("Build your prompt first.");return;}try{await navigator.clipboard.writeText(t);$("copy").textContent="Copied!";setTimeout(()=>$("copy").textContent="Copy prompt",1500);}catch(e){$("output").select();alert("Select and copy the prompt.");}});
+$("videoFile").addEventListener("change",e=>{const f=e.target.files[0];if(!f)return;if(currentUrl)URL.revokeObjectURL(currentUrl);currentUrl=URL.createObjectURL(f);const v=document.createElement("video");v.src=currentUrl;v.controls=true;v.playsInline=true;$("preview").replaceChildren(v);$("download").disabled=false;$("fileInfo").textContent=`${f.name} · ${(f.size/1048576).toFixed(1)} MB`;});
+$("download").addEventListener("click",()=>{if(!currentUrl)return;const a=document.createElement("a");a.href=currentUrl;a.download=$("videoFile").files[0]?.name||"cineai-video.mp4";a.click();});
+$("clear").addEventListener("click",()=>{if(currentUrl)URL.revokeObjectURL(currentUrl);currentUrl=null;$("videoFile").value="";$("download").disabled=true;$("fileInfo").textContent="";$("preview").innerHTML='<div class="placeholder"><div class="play">▶</div><b>Your video preview appears here</b><p>Choose an MP4 file below to preview it.</p></div>';});
+if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
+</script>
+</body>
+</html>
